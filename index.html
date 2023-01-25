@@ -19,22 +19,9 @@
       <div class="profile-info">
         <h1 class="name">Жак-Ив Кусто</h1>
         <p class="about">Исследователь океана</p>
-        <a class="popup__open" href="#"><img class="edit-button" href="#" src="./images/edit_button.png" alt="Редактировать"></a>
+      </div>
+      <a class="popup__open" href="#"><img class="edit-button" href="#" src="./images/edit_button.png" alt="Редактировать"></a>
       <img class="add-button" src="./images/add_button.png" alt="Добавить">
-      </div>
-      <div>
-        <form class="popup">
-          <img class="popup__close" src="./images/close_icon.png" alt="Закрыть">
-          <h2>Редактировать профиль</h2>
-          <label>
-            <input class="popup_name" type="text" name="name" placeholder="Жак-Ив Кусто">
-          </label>  
-          <label>
-            <input class="popup__about" type="text" placeholder="Исследователь океана">
-          </label>
-          <button class="popup__save" type="submit">Сохранить</button>
-        </form>
-      </div>
     </section>
 
     <section class="elements">
@@ -86,5 +73,24 @@
   <footer class="footer">
     <p class="footer__info">&copy; 2020 Mesto Russia</p>
   </footer>
+
+  <section class="overlay">
+
+    <form class="popup">
+
+      <a href="#" class="popup__close"><img src="./images/close_icon.png" alt="Закрыть"></a>
+
+      <label  class="popup__title">Редактировать профиль</label>
+
+      <input class="popup__field" type="text" name="name" placeholder="Жак-Ив Кусто" maxlength="30"></input>
+
+      <input class="popup__field" type="text" placeholder="Исследователь океана"></input>
+
+      <button class="popup__save" type="submit">Сохранить</button>
+    </form>
+  </section>
+
+ <script src="./index.js"></script>
+
 </body>
 </html>

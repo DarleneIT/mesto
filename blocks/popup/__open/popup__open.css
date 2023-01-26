@@ -1,0 +1,11 @@
+.popup__open {
+  align-self: end;
+}
+
+@media screen and (max-width: 465px) {
+  .popup__open {
+  position: absolute;
+  top: 10%;
+  left: 105%;
+ }
+}

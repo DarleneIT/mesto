@@ -1,0 +1,11 @@
+.element {
+  border-radius: 10px;
+  max-height: 361px;
+  overflow: hidden;
+  background-color: #FFFFFF;
+}
+
+@media screen and (max-width: 465px) {
+  .element {
+ }
+}

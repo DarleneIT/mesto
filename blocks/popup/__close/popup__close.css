@@ -1,0 +1,11 @@
+.popup__close {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  bottom: calc(100% + 8px);
+  left: calc(100% + 8px);
+}
+
+.popup__close:hover {
+  cursor: pointer;
+}

@@ -4,8 +4,3 @@
   overflow: hidden;
   background-color: #FFFFFF;
 }
-
-@media screen and (max-width: 465px) {
-  .element {
- }
-}

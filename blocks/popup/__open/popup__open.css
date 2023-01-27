@@ -1,11 +1,32 @@
 .popup__open {
-  align-self: end;
+  background-color: transparent;
+  border: 1px solid #FFFFFF;
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 15px;
+  left: calc(100% + 18px);
+
+  opacity: 100%;
+  transition: opacity .3s ease-in-out;
 }
 
-@media screen and (max-width: 465px) {
-  .popup__open {
-  position: absolute;
-  top: 10%;
-  left: 105%;
- }
-}
+.popup__open:hover {
+  opacity: 50%;
+  transition: opacity .5s ease-in-out;
+  cursor: pointer;
+  }
+
+  @media screen and (max-width: 465px) {
+    .popup__open {
+      width: 18px;
+      height: 18px;
+      top: 8px;
+      left: calc(100% + 10px);
+    }
+  }

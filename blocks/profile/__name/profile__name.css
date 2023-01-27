@@ -9,9 +9,9 @@
   padding: 0;
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: px) {
   .profile__name {
-    font-size: calc(5px + 3vw);
+    font-size: 6vw;
   }
 }
 

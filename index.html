@@ -13,12 +13,12 @@
     <img class="header__logo" src="./images/logo.png" alt="Логотип сайта">
   </header>
 
-  <main>
+  <main class="content">
     <section class="profile">
       <img class="profile__avatar" src="./images/avatar.jpg" alt="Фото Жак-Ив Кусто">
       <div class="profile__info">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
-        <a class="popup__open" href="#"><img class="profile__edit-button" href="#" src="./images/edit_button.png" alt="Редактировать"></a>
+        <button class="popup__open"><img class="profile__edit-button" href="#" src="./images/edit_button.png" alt="Редактировать"></button>
         <p class="profile__about">Исследователь океана</p>
       </div>
       <img class="profile__add-button" src="./images/add_button.png" alt="Добавить">
@@ -74,11 +74,10 @@
     <p class="footer__info">&copy; 2020 Mesto Russia</p>
   </footer>
 
-  <section class="overlay">
+  <section class="popup">
+    <form class="popup__container">
 
-    <form class="popup">
-
-      <a href="#" class="popup__close"><img src="./images/close_icon.png" alt="Закрыть"></a>
+      <button href="#" class="popup__close"><img class="popup__close-button" src="./images/close_icon.png" alt="Закрыть"></button>
 
       <label  class="popup__title">Редактировать профиль</label>
 

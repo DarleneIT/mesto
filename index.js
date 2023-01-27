@@ -1,18 +1,18 @@
-const popupOverlay = document.querySelector('.overlay');
-const popup = document.querySelector('.popup');
-let openPopupButtons = document.querySelectorAll('.popup__open');
-let closePopupButton = document.querySelector('.popup__close');
+let editButton = document.querySelector('.popup__open');
+let popup = document.querySelector('.popup');
+let closeButton = popup.querySelector('.popup__close');
 
-openPopupButtons.forEach((button) => {
-    button.addEventListener('click', (e) => {
-        e.preventDefault();
-        popupOverlay.classList.add('active');
-        popup.classList.add('active');
-    })
-});
+let toggleOpenPopup = () => {
+  popup.classList.toggle('popup_opened');
+};
 
-closePopupButton.addEventListener('click',() => {
-    popupOverlay.classList.remove('active');
-    popup.classList.remove('active');
-});
+let handleEditButtonClick = () => {
+  toggleOpenPopup();
+};
 
+let handleCloseButtonClick = () => {
+    toggleOpenPopup();
+}
+
+  editButton.addEventListener('click', handleEditButtonClick);
+  closeButton.addEventListener('click', handleCloseButtonClick);

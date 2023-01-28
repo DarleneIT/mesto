@@ -9,8 +9,13 @@
   line-height: 22px;
   text-align: center;
   color: #FFFFFF;
-  cursor: pointer;
 }
+
+.popup__save:hover {
+  opacity: 0.8;
+  transition: opacity .7s ease-in-out;
+  cursor: pointer;
+  }
 
 @media screen and (max-width: 565px) {
   .popup__save {

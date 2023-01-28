@@ -1,17 +1,20 @@
-let openEditButton = document.querySelector('.popup__open');
 let popup = document.querySelector('.popup');
+let openEditButton = document.querySelector('.popup__open');
 let closeEditButton = popup.querySelector('.popup__close');
 
-let toggleOpenPopup = () => {
-  popup.classList.toggle('popup_opened');
+let OpenPopup = () => {
+  popup.classList.add('popup_opened');
 };
 
 let handleEditButtonClick = () => {
-  toggleOpenPopup();
+  OpenPopup();
 };
 
+let ClosePopup = () => {
+  popup.classList.remove('popup_opened');
+};
 let handleCloseButtonClick = () => {
-    toggleOpenPopup();
+    ClosePopup();
 }
 
 openEditButton.addEventListener('click', handleEditButtonClick);
@@ -33,4 +36,4 @@ function handleFormSubmit (event) {
   username.textContent = nameInput.value;
   job.textContent = jobInput.value;
 }
-formElement.addEventListener('submit', handleFormSubmit);
+formElement.addEventListener('submit', handleFormSubmit, handleCloseButtonClick);

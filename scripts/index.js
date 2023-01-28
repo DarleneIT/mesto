@@ -1,5 +1,5 @@
 let popup = document.querySelector('.popup');
-let openEditButton = document.querySelector('.popup__open');
+let openEditButton = document.querySelector('.profile__open');
 let closeEditButton = popup.querySelector('.popup__close');
 
 let OpenPopup = () => {

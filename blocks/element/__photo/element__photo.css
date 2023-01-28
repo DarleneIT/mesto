@@ -13,11 +13,3 @@
     object-position: top;
   }
 }
-
-@media screen and (max-width: 465px) {
-  .element__photo {
-  max-width: 580px;
-  object-fit: cover;
-  object-position: top;
- }
-}

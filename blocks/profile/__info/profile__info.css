@@ -1,9 +1,7 @@
 .profile__info {
   position: relative;
-
   display: flex;
   flex-direction: column;
-
   gap: 16px 18px;
   margin-left: 30px;
   width: fit-content;

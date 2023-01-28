@@ -10,16 +10,6 @@
   resize: none;
 }
 
-.popup__field::placeholder {
-  color: #000000;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
-  vertical-align: top;
-}
-
 @media screen and (max-width: 565px) {
   .popup__field {
     max-width: 238px;

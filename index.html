@@ -19,7 +19,7 @@
       <div class="profile__info">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
         <button class="popup__open"><img class="profile__edit-button" href="#" src="./images/edit_button.png" alt="Редактировать"></button>
-        <p class="profile__about">Исследователь океана</p>
+        <p class="profile__job">Исследователь океана</p>
       </div>
       <img class="profile__add-button" src="./images/add_button.png" alt="Добавить">
     </section>
@@ -76,20 +76,15 @@
 
   <section class="popup">
     <form class="popup__container">
-
-      <button href="#" class="popup__close"><img class="popup__close-button" src="./images/close_icon.png" alt="Закрыть"></button>
-
+      <button class="popup__close"><img class="popup__close-button" src="./images/close_icon.png" alt="Закрыть"></button>
       <label  class="popup__title">Редактировать профиль</label>
-
-      <input class="popup__field" type="text" name="name" placeholder="Жак-Ив Кусто" maxlength="30"></input>
-
-      <input class="popup__field" type="text" placeholder="Исследователь океана"></input>
-
+      <input class="popup__field popup__name" type="text" value="Жак-Ив Кусто" placeholder="Ваше имя" name="name"  maxlength="30"></input>
+      <input class="popup__field popup__job" type="text" value="Исследователь океана" placeholder="Ваше призвание" ></input>
       <button class="popup__save" type="submit">Сохранить</button>
     </form>
   </section>
 
- <script src="./index.js"></script>
+ <script src="./scripts/index.js"></script>
 
 </body>
 </html>

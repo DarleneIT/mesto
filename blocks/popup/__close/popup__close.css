@@ -1,14 +1,15 @@
 .popup__close {
+  background-color: transparent;
+  background-image: url(../../../images/close_button.svg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-style: none;
   position: absolute;
-  width: 32px;
-  height: 32px;
   bottom: calc(100% + 8px);
   left: calc(100% + 8px);
-  background-color: transparent;
-  border-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 32px;
+  height: 32px;
 }
 
 .popup__close:hover {

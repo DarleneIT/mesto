@@ -1,6 +1,4 @@
-.profile__about {
-  font-family: 'Inter';
-  font-style: normal;
+.profile__job {
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
@@ -11,9 +9,9 @@
 }
 
 @media screen and (max-width: 465px) {
-  .profile__about {
+  .profile__job {
     font-size: 14px;
     line-height: 17px;
-    text-align: center;
+    justify-self: center;
   }
 }

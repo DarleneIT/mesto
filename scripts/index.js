@@ -1,3 +1,4 @@
+//Открытие и закрытие popup
 let popup = document.querySelector('.popup');
 let openEditButton = document.querySelector('.profile__open');
 let closeEditButton = popup.querySelector('.popup__close');
@@ -20,6 +21,7 @@ let handleCloseButtonClick = () => {
 openEditButton.addEventListener('click', handleEditButtonClick);
 closeEditButton.addEventListener('click', handleCloseButtonClick);
 
+//Изменение данных в профайле
 let formElement = document.querySelector('.popup__container');
 let nameInput = document.querySelector('.popup__name');
 let jobInput = document.querySelector('.popup__job');

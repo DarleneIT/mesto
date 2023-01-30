@@ -8,15 +8,15 @@
   border-style: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   resize: none;
+  margin: 0 0 30px 0;
+}
+
+.popup__field:last-of-type {
+  margin-bottom: 45px;
 }
 
 @media screen and (max-width: 565px) {
   .popup__field {
     max-width: 238px;
-    margin-bottom: 30px;
    }
-  }
-
-  .popup__field:last-child {
-    margin-bottom: 45px;
   }

@@ -6,23 +6,23 @@
   background-position: center;
   border-style: none;
   position: absolute;
-  bottom: calc(100% + 8px);
-  left: calc(100% + 8px);
+  top: -40px;
+  right: -40px;
   width: 32px;
   height: 32px;
+  transition: opacity .4s ease-in-out;
 }
 
 .popup__close:hover {
   cursor: pointer;
-  opacity: 50%;
-  transition: opacity .5s ease-in-out;
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 565px) {
   .popup__close {
     width: 20px;
     height: 20px;
-    bottom: calc(100% + 16px);
-    left: calc(100% - 20px);
+    bottom: -36px;
+    right: 0;
    }
   }

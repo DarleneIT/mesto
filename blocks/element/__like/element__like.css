@@ -7,13 +7,11 @@
   border-style: none;
   width: 22px;
   height: 19px;
-  opacity: 100%;
-  transition: opacity .3s ease-in-out;
+  transition: all .4s ease-in-out;
 }
 
 .element__like:hover {
   opacity: 50%;
   transform: scale(1.25);
-  transition: all .7s ease-out;
   cursor: pointer;
 }

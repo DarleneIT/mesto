@@ -4,6 +4,9 @@
   line-height: 22px;
   color: #FFFFFF;
   grid-column: span 2;
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
+  overflow: hidden;
   margin: 0;
   padding: 0;
 }

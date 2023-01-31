@@ -1,41 +1,37 @@
 //Открытие и закрытие popup
-let popup = document.querySelector('.popup');
+let popUp = document.querySelector('.popup');
 let openEditButton = document.querySelector('.profile__open');
-let closeEditButton = popup.querySelector('.popup__close');
+let closeEditButton = popUp.querySelector('.popup__close');
 
-let OpenPopup = () => {
-  popup.classList.add('popup_opened');
+let openPopUp = () => {
+  inputJob.value = job.textContent;
+  inputName.value = userName.textContent;
+  popUp.classList.add('popup_opened');
 };
 
-let handleEditButtonClick = () => {
-  OpenPopup();
+let closePopUp = () => {
+  popUp.classList.remove('popup_opened');
 };
 
-let ClosePopup = () => {
-  popup.classList.remove('popup_opened');
-};
-let handleCloseButtonClick = () => {
-    ClosePopup();
-}
-
-openEditButton.addEventListener('click', handleEditButtonClick);
-closeEditButton.addEventListener('click', handleCloseButtonClick);
+openEditButton.addEventListener('click', openPopUp);
+closeEditButton.addEventListener('click', closePopUp);
 
 //Изменение данных в профайле
 let formElement = document.querySelector('.popup__container');
-let nameInput = document.querySelector('.popup__name');
-let jobInput = document.querySelector('.popup__job');
+
+let inputName = document.querySelector('.popup__field_name');
+let inputJob = document.querySelector('.popup__field_job');
+
+let userName = document.querySelector('.profile__name');
+let job = document.querySelector('.profile__job');
 
 function handleFormSubmit (event) {
   event.preventDefault();
 
-  console.log(nameInput.value);
-  console.log(jobInput.value);
+  userName.textContent = inputName.value;
+  job.textContent = inputJob.value;
 
-  let username = document.querySelector('.profile__name');
-  let job = document.querySelector('.profile__job');
-
-  username.textContent = nameInput.value;
-  job.textContent = jobInput.value;
+  popUp.classList.remove('popup_opened');
 }
-formElement.addEventListener('submit', handleFormSubmit, handleCloseButtonClick);
+
+formElement.addEventListener('submit', handleFormSubmit);

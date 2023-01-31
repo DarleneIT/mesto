@@ -8,13 +8,12 @@
   width: 24px;
   height: 24px;
   margin-top: 15px;
-  opacity: 100%;
-  transition: opacity .3s ease-in-out;
+  margin-right: 10px;
+  transition: opacity .4s ease-in-out;
 }
 
 .profile__open:hover {
-  opacity: 50%;
-  transition: opacity .5s ease-in-out;
+  opacity: 0.6;
   cursor: pointer;
   }
 

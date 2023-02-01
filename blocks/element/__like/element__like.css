@@ -15,9 +15,3 @@
   transform: scale(1.25);
   cursor: pointer;
 }
-
-.element__like:hover {
-  opacity: 50%;
-  transform: scale(1.25);
-  cursor: pointer;
-}

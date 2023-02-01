@@ -17,10 +17,10 @@ openEditButton.addEventListener('click', openPopUp);
 closeEditButton.addEventListener('click', closePopUp);
 
 //Изменение данных в профайле
-let formElement = document.querySelector('.popup__container');
+let formElement = document.querySelector('.popup__form');
 
-let inputName = document.querySelector('.popup__field_name');
-let inputJob = document.querySelector('.popup__field_job');
+let inputName = document.querySelector('.popup__field_type_name');
+let inputJob = document.querySelector('.popup__field_type_job');
 
 let userName = document.querySelector('.profile__name');
 let job = document.querySelector('.profile__job');
@@ -31,7 +31,7 @@ function handleFormSubmit (event) {
   userName.textContent = inputName.value;
   job.textContent = inputJob.value;
 
-  popUp.classList.remove('popup_opened');
+  closePopUp();
 }
 
 formElement.addEventListener('submit', handleFormSubmit);

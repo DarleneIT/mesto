@@ -7,9 +7,10 @@
   margin: 51px auto 0;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 920px) {
   .elements {
-    max-width: 768px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+ 
   }
 }
 

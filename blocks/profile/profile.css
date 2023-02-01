@@ -6,12 +6,6 @@
     margin: 40px auto 0;
   }
 
-  @media screen and (max-width: 900px) {
-    .profile {
-        max-width: 768px;
-    }
-  }
-
   @media screen and (max-width: 700px) {
     .profile {
       grid-template-columns: 120px auto 50px;
@@ -22,6 +16,9 @@
     .profile {
       display: flex;
       flex-direction: column;
+      align-self: center;
+      justify-self: center;
+      max-width: 282px;
       margin-top: 42px;
     }
   }

@@ -24,50 +24,7 @@
       <button class="profile__add-button" type="button" aria-label="Добавить фото"></button>
     </section>
 
-    <section class="elements">
-      <article class="element">
-        <img class="element__photo" src="./images/karachayevsk.jpg" alt="Карачаевск">
-        <div class="element__info">
-          <h2 class="element__title">Карачаевск</h2>
-          <button class="element__like" type="button" aria-label="Нравится"></button>
-        </div>
-      </article>
-      <article class="element">
-        <img class="element__photo" src="./images/elbrus.jpg" alt="Гора Эльбрус">
-            <div class="element__info">
-              <h2 class="element__title">Гора Эльбрус</h2>
-              <button class="element__like" type="button" aria-label="Нравится"></button>
-            </div>
-        </article>
-        <article class="element">
-          <img class="element__photo" src="./images/dombai.jpg" alt="Домбай горы">
-          <div class="element__info">
-            <h2 class="element__title">Домбай</h2>
-            <button class="element__like" type="button" aria-label="Нравится"></button>
-          </div>
-        </article>
-        <article class="element">
-          <img class="element__photo" src="./images/arkhyz.jpg" alt="Архыз горы">
-          <div class="element__info">
-            <h2 class="element__title">Архыз</h2>
-            <button class="element__like" type="button" aria-label="Нравится"></button>
-          </div>
-        </article>
-        <article class="element">
-          <img class="element__photo" src="./images/teberda.jpg" alt="Тебердинский заповедник">
-          <div class="element__info">
-            <h2 class="element__title">Тебердинский заповедник</h2>
-            <button class="element__like" type="button" aria-label="Нравится"></button>
-          </div>
-        </article>
-        <article class="element">
-          <img class="element__photo" src="./images/cherkessiya.jpg" alt="Карачаево-Черкессия горы">
-          <div class="element__info">
-            <h2 class="element__title">Карачаево-Черкессия</h2>
-            <button class="element__like" type="button" aria-label="Нравится"></button>
-          </div>
-        </article>
-    </section>
+    <section class="elements"></section>
   </main>
 
   <footer class="footer">
@@ -79,12 +36,37 @@
       <button class="popup__close" type="button" aria-label="Закрыть"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
       <form class="popup__form" name="profiles">
-        <input class="popup__field popup__field_type_name" type="text" value="Жак-Ив Кусто" placeholder="Ваше имя" name="name"  minlength="" maxlength="30">
+        <input class="popup__field popup__field_type_name" type="text" value="Жак-Ив Кусто" placeholder="Ваше имя" name="name"  minlength="3" maxlength="30">
         <input class="popup__field popup__field_type_job" type="text" value="Исследователь океана" placeholder="Ваше призвание" name="job">
         <button class="popup__save" type="submit" aria-label="Сохранить" name="save">Сохранить</button>
       </form>
     </div>
   </div>
+
+  <div class="popup item">
+    <div class="item__container">
+      <button class="item__close" type="button" aria-label="Закрыть"></button>
+      <h3 class="item__title">Новое место</h3>
+      <form class="item__form" name="items">
+        <input class="item__field item__field_type_name" type="text" placeholder="Название" name="place"  minlength="3" maxlength="30">
+        <input class="item__field item__field_type_link" type="text" placeholder="Ссылка на картинку" name="link">
+        <button class="item__save" type="submit" aria-label="Создать" name="create">Создать</button>
+      </form>
+    </div>
+  </div>
+
+
+
+  <template id="card">
+    <article class="element">
+      <img class="element__photo" alt="Фото">
+      <button class="element__delete" type="button" aria-label="Удалить"></button>
+      <div class="element__info">
+        <h2 class="element__title"></h2>
+        <button class="element__like" type="button" aria-label="Нравится"></button>
+      </div>
+    </article>
+  </template>
 
   <script src="./scripts/index.js"></script>
 

@@ -1,10 +1,10 @@
 //Кнопки
 const openEditProfileButton = document.querySelector('.profile__open');
 const addNewCardButton = document.querySelector('.profile__add-button');
-const closeButton = document.querySelectorAll('.popup__close-button');
+const closeButtons = document.querySelectorAll('.popup__close-button');
 
 //Переменные всплывающих окон
-const popUpProfile = document.querySelector('.popup');
+const popUpProfile = document.querySelector('.profile-popup');
 const popUpNewCard = document.querySelector('.item');
 const popUpImage = document.querySelector('.image');
 
@@ -60,7 +60,7 @@ function openPopUp(open) {
 function closePopUp(close) {
   close.classList.remove('popup_opened');
 }
-closeButton.forEach((button) => {
+closeButtons.forEach((button) => {
   const close = button.closest('.popup');
   button.addEventListener('click', () => closePopUp(close));
 });
@@ -134,8 +134,8 @@ cards.prepend(renderCard(element));
 
 //Добавление карточки
 const formNewCard = document.querySelector('.item__form');
-const inputNewCardName = document.querySelector('.item__field_type_name');
-const inputNewCardLink = document.querySelector('.item__field_type_link');
+const inputNewCardName = document.querySelector('.popup__field_type_title');
+const inputNewCardLink = document.querySelector('.popup__field_type_link');
 
 formNewCard.addEventListener('submit', (event) => {
   event.preventDefault();

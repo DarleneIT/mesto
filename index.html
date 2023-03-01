@@ -31,7 +31,7 @@
     <p class="footer__info">&copy; 2020 Mesto Russia</p>
   </footer>
 
-  <div class="popup">
+  <div class="popup profile-popup">
     <div class="popup__container">
       <button class="popup__close popup__close-button" type="button" aria-label="Закрыть"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
@@ -44,13 +44,13 @@
   </div>
 
   <div class="popup item">
-    <div class="item__container">
-      <button class="item__close popup__close-button" type="button" aria-label="Закрыть"></button>
-      <h3 class="item__title">Новое место</h3>
-      <form class="item__form" name="items">
-        <input class="item__field item__field_type_name" type="text" value="" placeholder="Название" name="place"  minlength="3" maxlength="30">
-        <input class="item__field item__field_type_link" type="text" value="" placeholder="Ссылка на картинку" name="link">
-        <button class="item__save" type="submit" aria-label="Создать" name="create">Создать</button>
+    <div class="popup__container">
+      <button class="popup__close popup__close-button" type="button" aria-label="Закрыть"></button>
+      <h3 class="popup__title">Новое место</h3>
+      <form class="popup__form item__form" name="items">
+        <input class="popup__field popup__field_type_title" type="text" value="" placeholder="Название" name="place"  minlength="3" maxlength="30">
+        <input class="popup__field popup__field_type_link" type="text" value="" placeholder="Ссылка на картинку" name="link">
+        <button class="popup__save" type="submit" aria-label="Создать" name="create">Создать</button>
       </form>
     </div>
   </div>

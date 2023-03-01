@@ -6,7 +6,7 @@ const closeButton = document.querySelectorAll('.popup__close-button');
 //Переменные всплывающих окон
 const popUpProfile = document.querySelector('.popup');
 const popUpNewCard = document.querySelector('.items');
-const popUpImage = document.querySelector('.images');
+const popUpImage = document.querySelector('.image');
 
 //Переменные редактирования профиля
 const formProfile = document.querySelector('.popup__form');

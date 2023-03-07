@@ -15,7 +15,7 @@
 .popup__save:hover {
   opacity: 0.8;
   cursor: pointer;
-  }
+}
 
 @media screen and (max-width: 565px) {
   .popup__save {

@@ -15,6 +15,10 @@
   margin-bottom: 48px;
 }
 
+.popup__field:invalid {
+  border-bottom: 1px solid rgba(255, 0, 0, 1);
+}
+
 @media screen and (max-width: 565px) {
   .popup__field {
     max-width: 238px;
@@ -22,5 +26,4 @@
    .popup__field:last-of-type {
     margin-bottom: 45px;
   }
-
   }

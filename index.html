@@ -24,7 +24,8 @@
       <button class="profile__add-button" type="button" aria-label="Добавить карточку"></button>
     </section>
 
-    <section class="elements"></section>
+    <section class="elements">
+    </section>
   </main>
 
   <footer class="footer">
@@ -35,11 +36,17 @@
     <div class="popup__container">
       <button class="popup__close popup__close-button" type="button" aria-label="Закрыть"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form class="popup__form" name="profiles">
-        <input class="popup__field popup__field_type_name" type="text" value="Жак-Ив Кусто" placeholder="Ваше имя" name="name"  minlength="3" maxlength="30">
-        <input class="popup__field popup__field_type_job" type="text" value="Исследователь океана" placeholder="Ваше призвание" name="job">
+
+      <form class="popup__form" name="profiles" novalidate>
+        <input class="popup__field popup__field_type_name" type="text" value="Жак-Ив Кусто" placeholder="Ваше имя" name="name" id="user_name" minlength="2" maxlength="40" required>
+        <span class="user_name-error popup__error"></span>
+
+        <input class="popup__field popup__field_type_job" type="text" value="Исследователь океана" placeholder="Ваше призвание" name="job" id="user_job" minlength="2" maxlength="200" required>
+        <span class="user_job-error popup__error"></span>
+
         <button class="popup__save" type="submit" aria-label="Сохранить" name="save">Сохранить</button>
       </form>
+
     </div>
   </div>
 
@@ -47,9 +54,13 @@
     <div class="popup__container">
       <button class="popup__close popup__close-button" type="button" aria-label="Закрыть"></button>
       <h3 class="popup__title">Новое место</h3>
-      <form class="popup__form item__form" name="items">
-        <input class="popup__field popup__field_type_title" type="text" value="" placeholder="Название" name="place"  minlength="3" maxlength="30">
-        <input class="popup__field popup__field_type_link" type="text" value="" placeholder="Ссылка на картинку" name="link">
+      <form class="popup__form item__form" name="items" novalidate>
+        <input class="popup__field popup__field_type_title" type="text" value="" placeholder="Название" name="place" id="user_place"  minlength="2" maxlength="30"  required>
+        <span class="user_place-error popup__error"></span>
+
+        <input class="popup__field popup__field_type_link" type="url" value="" placeholder="Ссылка на картинку" name="link" id="user_url" required>
+        <span class="user_url-error popup__error"></span>
+
         <button class="popup__save" type="submit" aria-label="Создать" name="create">Создать</button>
       </form>
     </div>
@@ -74,6 +85,7 @@
     </article>
   </template>
 
+  <script src="./scripts/validate.js"></script>
   <script src="./scripts/index.js"></script>
 
 </body>

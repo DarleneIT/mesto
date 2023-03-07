@@ -23,6 +23,17 @@ const cards = document.querySelector('.elements');
 const imageFullSize = document.querySelector('.image__photo');
 const nameImageFullSize = document.querySelector('.image__title');
 
+//Селекторы
+const selectors = {
+  formSelector: '.popup__form',
+  submitElement: '.popup__save',
+  inputSelector: '.popup__field',
+  inactiveButtonClass: '.popup__save_invalid',
+  inputErrorClass: '.popup__error-active',
+}
+
+enableValidation(selectors);
+
 //Шесть карточек «из коробки»
 const initialCards = [
    {
@@ -54,12 +65,33 @@ const initialCards = [
 //Функция Открыть окно
 function openPopUp(open) {
   open.classList.add('popup_opened');
-}
+  closeEsc(open);
+  closeOverlay(open);
+};
 
-//Функция Закрыть окно
+//Функция Закрыть окно Esc
+function closeEsc(pressEsc) {
+document.addEventListener('keydown', (event) => {
+  if(event.key === 'Escape') {
+    pressEsc.classList.remove('popup_opened');
+    };
+  });
+};
+
+//Функция Закрыть окно Overlay
+function closeOverlay(pressOverlay) {
+  pressOverlay.addEventListener('click', (event) => {
+    if(event.currentTarget === event.target) {
+      closePopUp(pressOverlay);
+    };
+  });
+};
+
+//Функция Закрыть окно крестиком
 function closePopUp(close) {
   close.classList.remove('popup_opened');
 }
+
 closeButtons.forEach((button) => {
   const close = button.closest('.popup');
   button.addEventListener('click', () => closePopUp(close));

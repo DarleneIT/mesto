@@ -10,6 +10,7 @@
   text-align: center;
   color: #FFFFFF;
   transition: opacity .4s ease-in-out;
+  margin-top: 18px;
 }
 
 .popup__save:hover {
@@ -23,5 +24,6 @@
     max-height: 45px;
     font-size: 14px;
     line-height: 17px;
+    margin-top: 15px;
   }
 }

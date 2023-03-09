@@ -28,9 +28,9 @@ const selectors = {
   formSelector: '.popup__form',
   submitElement: '.popup__save',
   inputSelector: '.popup__field',
-  inactiveButtonClass: '.popup__save_invalid',
-  inputErrorClass: '.popup__error-active',
-}
+  inactiveButtonClass: 'popup__save_invalid',
+  inputErrorClass: 'popup__error-active',
+};
 
 enableValidation(selectors);
 
@@ -87,6 +87,11 @@ function closeOverlay(pressOverlay) {
   });
 };
 
+//Очистить сообщение об ошибке
+function resetInput(event) {
+  event.target.reset();
+}
+
 //Функция Закрыть окно крестиком
 function closePopUp(close) {
   close.classList.remove('popup_opened');
@@ -102,7 +107,8 @@ openEditProfileButton.addEventListener('click', function () {
   openPopUp(popUpProfile);
   inputProfileJob.value = userJob.textContent;
   inputProfileName.value = userName.textContent;
-});
+}
+);
 
 //Внести изменения в профиль
 function handleFormSubmit(event) {

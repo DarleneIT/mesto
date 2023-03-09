@@ -45,7 +45,6 @@ const formIsValid = inputs.every(inputElement => inputElement.validity.valid);
     }
 };
 
-
 const setEventListeners = (form, selectors) => {
   const submitElement = form.querySelector(selectors.submitElement);
   const inputs = Array.from(form.querySelectorAll(selectors.inputSelector));
@@ -58,7 +57,6 @@ const setEventListeners = (form, selectors) => {
     });
   toggleButtonState(inputs, submitElement, selectors.inactiveButtonClass);
 };
-
 
 const enableValidation = (selectors) => {
   const forms = Array.from(document.querySelectorAll(selectors.formSelector));

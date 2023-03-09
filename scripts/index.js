@@ -34,73 +34,52 @@ const selectors = {
 
 enableValidation(selectors);
 
-//Шесть карточек «из коробки»
-const initialCards = [
-   {
-     name: 'Архыз',
-     link: 'https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8ZG9ncyUyMGFuZCUyMHNlYXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60'
-   },
-   {
-     name: 'Челябинск',
-     link: 'https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fGRvZ3MlMjBhbmQlMjBzZWF8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60'
-   },
-   {
-     name: 'Иваново',
-     link: 'https://images.unsplash.com/photo-1568480418648-be0346569876?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTN8fGRvZ3MlMjBhbmQlMjBzZWF8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60'
-   },
-   {
-     name: 'Камчатка',
-     link: 'https://images.unsplash.com/photo-1509924295413-6722539acbb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTEzfHxkb2dzJTIwc2VhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60'
-   },
-   {
-     name: 'Холмогорский район',
-     link: 'https://images.unsplash.com/photo-1554224311-beee415c201f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTA0fHxkb2dzJTIwYW5kJTIwc2VhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60'
-   },
-   {
-     name: 'Байкал',
-     link: 'https://images.unsplash.com/photo-1512723185835-0700e5069a9a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE0fHxkb2dzJTIwc2VhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60'
-   }
-];
+//Функция Деактивировать кнопку Сохранить
+function inactiveSaveButton(saveIt) {
+  const saveButton = saveIt.querySelector(selectors.submitElement);
+  if(saveButton.disabled === false) {
+    saveButton.setAttribute('disabled', true);
+    saveButton.classList.add(selectors.inactiveButtonClass);
+  }
+}
 
 //Функция Открыть окно
 function openPopUp(open) {
   open.classList.add('popup_opened');
-  closeEsc(open);
-  closeOverlay(open);
+  document.addEventListener('keydown', closeEsc);
+  document.addEventListener('click', closeOverlay);
+  inactiveSaveButton(open.querySelector('.popup__form'));
+  document.querySelector('.popup__form').reset();
 };
 
 //Функция Закрыть окно Esc
-function closeEsc(pressEsc) {
-document.addEventListener('keydown', (event) => {
-  if(event.key === 'Escape') {
-    pressEsc.classList.remove('popup_opened');
-    };
-  });
+const closeEsc = (event) => {
+  if (event.key === 'Escape') {
+    const pressEsc = document.querySelector('.popup_opened');
+    closePopUp(pressEsc);
+  };
 };
 
 //Функция Закрыть окно Overlay
-function closeOverlay(pressOverlay) {
-  pressOverlay.addEventListener('click', (event) => {
-    if(event.currentTarget === event.target) {
-      closePopUp(pressOverlay);
-    };
-  });
+const closeOverlay = (event) => {
+  if (event.target.classList.contains('popup_opened')) {
+    closePopUp(event.target);
+  }
 };
 
-//Очистить сообщение об ошибке
-function resetInput(event) {
-  event.target.reset();
-}
 
 //Функция Закрыть окно крестиком
 function closePopUp(close) {
   close.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeEsc);
+  document.removeEventListener('click', closeOverlay);
 }
 
 closeButtons.forEach((button) => {
   const close = button.closest('.popup');
   button.addEventListener('click', () => closePopUp(close));
 });
+
 
 //Открыть редактирование профиля
 openEditProfileButton.addEventListener('click', function () {
@@ -111,13 +90,13 @@ openEditProfileButton.addEventListener('click', function () {
 );
 
 //Внести изменения в профиль
-function handleFormSubmit(event) {
+function handleProfileFormSubmit(event) {
   event.preventDefault();
   userName.textContent = inputProfileName.value;
   userJob.textContent = inputProfileJob.value;
   closePopUp(popUpProfile);
 }
-formProfile.addEventListener('submit', handleFormSubmit);
+formProfile.addEventListener('submit', handleProfileFormSubmit);
 
 //Открыть форму добавление новой карточки
 addNewCardButton.addEventListener('click', function () {
@@ -125,7 +104,7 @@ addNewCardButton.addEventListener('click', function () {
 });
  
 //Рендер карточки
-function renderCard(element) {
+function createCard(element) {
   const imageLink = element.link;
   const imageName = element.name;
   const imageAlt = element.name;
@@ -162,12 +141,12 @@ return newCard;
 
 //Загрузить "карточки из коробки"
 initialCards.forEach(function (element) {
-  cards.append(renderCard(element));
+  cards.append(createCard(element));
   });
 
 //Создать карточку
 const addNewCard = (element) => {
-cards.prepend(renderCard(element));
+cards.prepend(createCard(element));
 };
 
 //Добавление карточки
@@ -181,7 +160,7 @@ formNewCard.addEventListener('submit', (event) => {
     name: inputNewCardName.value,
     link: inputNewCardLink.value,
   });
-
-  event.target.reset();
   closePopUp(popUpNewCard);
+  formNewCard.reset();
+  inactiveSaveButton(formNewCard);
 });

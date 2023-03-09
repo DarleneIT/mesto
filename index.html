@@ -38,11 +38,11 @@
       <h3 class="popup__title">Редактировать профиль</h3>
 
       <form class="popup__form" name="profiles" novalidate>
-        <input class="popup__field popup__field_type_name" type="text" value="Жак-Ив Кусто" placeholder="Ваше имя" name="name" id="popup__field_type_name" minlength="2" maxlength="40" required>
-        <span class="popup__field_type_name-error popup__error"></span>
+        <input class="popup__field popup__field_type_name" type="text" value="Жак-Ив Кусто" placeholder="Ваше имя" name="name" id="type-name" minlength="2" maxlength="40" required>
+        <span class="type-name-error popup__error"></span>
 
-        <input class="popup__field popup__field_type_job" type="text" value="Исследователь океана" placeholder="Ваше призвание" name="job" id="popup__field_type_job" minlength="2" maxlength="200" required>
-        <span class="popup__field_type_job-error popup__error"></span>
+        <input class="popup__field popup__field_type_job" type="text" value="Исследователь океана" placeholder="Ваше призвание" name="job" id="type-job" minlength="2" maxlength="200" required>
+        <span class="type-job-error popup__error"></span>
 
         <button class="popup__save" type="submit" aria-label="Сохранить" name="save">Сохранить</button>
       </form>
@@ -55,11 +55,11 @@
       <button class="popup__close popup__close-button" type="button" aria-label="Закрыть"></button>
       <h3 class="popup__title">Новое место</h3>
       <form class="popup__form item__form" name="items" novalidate>
-        <input class="popup__field popup__field_type_title" type="text" value="" placeholder="Название" name="place" id="popup__field_type_title"  minlength="2" maxlength="30"  required>
-        <span class="popup__field_type_title-error popup__error"></span>
+        <input class="popup__field popup__field_type_title" type="text" value="" placeholder="Название" name="place" id="type-title-error"  minlength="2" maxlength="30"  required>
+        <span class="type-title-error popup__error"></span>
 
-        <input class="popup__field popup__field_type_link" type="url" value="" placeholder="Ссылка на картинку" name="link" id="popup__field_type_link" required>
-        <span class="popup__field_type_link-error popup__error"></span>
+        <input class="popup__field popup__field_type_link" type="url" value="" placeholder="Ссылка на картинку" name="link" id="type-link" required>
+        <span class="type-link-error popup__error"></span>
 
         <button class="popup__save" type="submit" aria-label="Создать" name="create">Создать</button>
       </form>

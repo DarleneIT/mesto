@@ -35,12 +35,12 @@ const selectors = {
 enableValidation(selectors);
 
 //Функция Деактивировать кнопку Сохранить
-function inactiveSaveButton(saveIt) {
-  const saveButton = saveIt.querySelector(selectors.submitElement);
-  if(saveButton.disabled === false) {
-    saveButton.setAttribute('disabled', true);
+function inactiveSaveButton(saveIt) { 
+  const saveButton = saveIt.querySelector(selectors.submitElement); 
+  if(saveButton.disabled === false) { 
+    inactiveButton(saveButton);
     saveButton.classList.add(selectors.inactiveButtonClass);
-  }
+  };
 }
 
 //Функция Открыть окно
@@ -48,7 +48,6 @@ function openPopUp(open) {
   open.classList.add('popup_opened');
   document.addEventListener('keydown', closeEsc);
   document.addEventListener('click', closeOverlay);
-  inactiveSaveButton(open.querySelector('.popup__form'));
   document.querySelector('.popup__form').reset();
 };
 
@@ -66,7 +65,6 @@ const closeOverlay = (event) => {
     closePopUp(event.target);
   }
 };
-
 
 //Функция Закрыть окно крестиком
 function closePopUp(close) {
@@ -103,7 +101,7 @@ addNewCardButton.addEventListener('click', function () {
   openPopUp(popUpNewCard);
 });
  
-//Рендер карточки
+//Создание карточки
 function createCard(element) {
   const imageLink = element.link;
   const imageName = element.name;
@@ -161,6 +159,6 @@ formNewCard.addEventListener('submit', (event) => {
     link: inputNewCardLink.value,
   });
   closePopUp(popUpNewCard);
-  formNewCard.reset();
   inactiveSaveButton(formNewCard);
+  formNewCard.reset();
 });

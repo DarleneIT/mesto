@@ -6,7 +6,7 @@ const showError = (errorElement, message, inputErrorClass) => {
 
 //Скрыть ошибку
 const hideError = (errorElement, selectors) => {
-  errorElement.textContent = '';
+  errorElement.textContent = ' ';
   errorElement.classList.remove(selectors.inputErrorClass);
 };
 

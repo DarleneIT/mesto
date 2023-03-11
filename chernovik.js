@@ -1,4 +1,12 @@
-// почти работает:
+//Работает: 
+//Функция Деактивировать кнопку Сохранить
+function inactiveSaveButton(event) {
+  const saveButton = event.submitter;
+  saveButton.disabled = true;
+  saveButton.classList.add(selectors.inactiveButtonClass);
+  }
+  
+  // почти работает:
 const showError = (errorElement, message, selectors) => {
   errorElement.textContent = message;
   errorElement.classList.add(selectors.inputErrorClass);

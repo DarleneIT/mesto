@@ -42,7 +42,7 @@ const formIsValid = inputs.every(inputElement => inputElement.validity.valid);
     activeButton(submitElement, inactiveButtonClass);
     } else {
     inactiveButton(submitElement, inactiveButtonClass);
-    }
+    };
 };
 
 const setEventListeners = (form, selectors) => {

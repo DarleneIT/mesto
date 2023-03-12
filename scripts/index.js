@@ -34,21 +34,12 @@ const selectors = {
 
 enableValidation(selectors);
 
-//Функция Деактивировать кнопку Сохранить
-function inactiveSaveButton(saveIt) { 
-  const saveButton = saveIt.querySelector(selectors.submitElement); 
-  if(saveButton.disabled === false) { 
-    inactiveButton(saveButton);
-    saveButton.classList.add(selectors.inactiveButtonClass);
-  };
-}
 
 //Функция Открыть окно
 function openPopUp(open) {
   open.classList.add('popup_opened');
   document.addEventListener('keydown', closeEsc);
   document.addEventListener('click', closeOverlay);
-  document.querySelector('.popup__form').reset();
 };
 
 //Функция Закрыть окно Esc
@@ -77,7 +68,6 @@ closeButtons.forEach((button) => {
   const close = button.closest('.popup');
   button.addEventListener('click', () => closePopUp(close));
 });
-
 
 //Открыть редактирование профиля
 openEditProfileButton.addEventListener('click', function () {
@@ -151,6 +141,7 @@ cards.prepend(createCard(element));
 const formNewCard = document.querySelector('.item__form');
 const inputNewCardName = document.querySelector('.popup__field_type_title');
 const inputNewCardLink = document.querySelector('.popup__field_type_link');
+const buttonSubmitFormAddCard = document.querySelector('.popup__save');
 
 formNewCard.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -159,6 +150,6 @@ formNewCard.addEventListener('submit', (event) => {
     link: inputNewCardLink.value,
   });
   closePopUp(popUpNewCard);
-  inactiveSaveButton(formNewCard);
+  inactiveButton(buttonSubmitFormAddCard, selectors.inactiveButtonClass);
   formNewCard.reset();
 });

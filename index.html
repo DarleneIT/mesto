@@ -38,10 +38,26 @@
       <h3 class="popup__title">Редактировать профиль</h3>
 
       <form class="popup__form" name="profiles" novalidate>
-        <input class="popup__field popup__field_type_name" type="text" value="Жак-Ив Кусто" placeholder="Ваше имя" name="name" id="type-name" minlength="2" maxlength="40" required>
+        <input 
+          class="popup__field popup__field_type_name" 
+          type="text" 
+          value="Жак-Ив Кусто" 
+          placeholder="Ваше имя" 
+          name="name" 
+          id="type-name" 
+          minlength="2" maxlength="40" 
+          required>
         <span class="type-name-error popup__error"></span>
 
-        <input class="popup__field popup__field_type_job" type="text" value="Исследователь океана" placeholder="Ваше призвание" name="job" id="type-job" minlength="2" maxlength="200" required>
+        <input 
+          class="popup__field popup__field_type_job" 
+          type="text" 
+          value="Исследователь океана" 
+          placeholder="Ваше призвание" 
+          name="job" 
+          id="type-job" 
+          minlength="2" maxlength="200" 
+          required>
         <span class="type-job-error popup__error"></span>
 
         <button class="popup__save" type="submit" aria-label="Сохранить" name="save">Сохранить</button>
@@ -61,7 +77,7 @@
         <input class="popup__field popup__field_type_link" type="url" value="" placeholder="Ссылка на картинку" name="link" id="type-link" required>
         <span class="type-link-error popup__error"></span>
 
-        <button class="popup__save" type="submit" aria-label="Создать" name="create">Создать</button>
+        <button class="popup__save" type="submit" aria-label="Создать" name="create" id="popup-save-newcard">Создать</button>
       </form>
     </div>
   </div>
@@ -74,7 +90,7 @@
     </div>
   </div>
 
-  <template id="card">
+  <template id="card" class="card-template">
     <article class="element">
       <img class="element__photo" alt="Фото">
       <button class="element__delete" type="button" aria-label="Удалить"></button>
@@ -86,8 +102,7 @@
   </template>
 
   <script src="./scripts/validate.js"></script>
-  <script src="./scripts/cards.js"></script>
-  <script src="./scripts/index.js"></script>
+  <script type="module" src="./scripts/index.js"></script>
 
 </body>
 </html>

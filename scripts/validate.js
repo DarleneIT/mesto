@@ -58,7 +58,7 @@ const setEventListeners = (form, selectors) => {
   toggleButtonState(inputs, submitElement, selectors.inactiveButtonClass);
 };
 
-const enableValidation = (selectors) => {
+const enableValidation = selectors => {
   const forms = Array.from(document.querySelectorAll(selectors.formSelector));
   forms.forEach(form => {
     setEventListeners(form, selectors);

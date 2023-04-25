@@ -1,4 +1,4 @@
-import Card from './Сard.js';
+import { Card } from './Сard.js';
 import { FormValidator } from './FormValidator.js';
 
 //Кнопки
@@ -19,7 +19,6 @@ const userName = document.querySelector('.profile__name');
 const userJob = document.querySelector('.profile__job');
 
 //Переменные для создания карточек
-const template = document.querySelector('#card').content;
 const cards = document.querySelector('.elements');
 
 //Переменные попап-картинки
@@ -28,12 +27,12 @@ const nameImageFullSize = document.querySelector('.image__title');
 
 //Селекторы
 const selectorConfig = {
-  formSelector: '.popup__form', //форма
-  submitElement: '.popup__save', //кнопка сохранить
-  inputSelector: '.popup__field', //поле ввода
-  inactiveButtonClass: 'popup__save_invalid', //неактивная кнопка сохранить
-  inputErrorClass: 'popup__error-active', //показать ошибку
-  errorClass: 'popup__field-block' //добавляет красную границу
+  formSelector: '.popup__form',
+  submitElement: '.popup__save',
+  inputSelector: '.popup__field',
+  inactiveButtonClass: 'popup__save_invalid',
+  inputErrorClass: 'popup__error-active',
+  errorClass: 'popup__field-blocked'
 }
 
 //Шесть карточек «из коробки»

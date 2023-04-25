@@ -11,10 +11,6 @@
   margin: 0;
 }
 
-.popup__field:invalid {
-  border-bottom: 1px solid rgba(255, 0, 0, 1);
-}
-
 @media screen and (max-width: 565px) {
   .popup__field {
     max-width: 238px;

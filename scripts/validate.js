@@ -45,8 +45,8 @@ const formIsValid = inputs.every(inputElement => inputElement.validity.valid);
     };
 };
 
-const setEventListeners = (form, selectors) => {
-  const submitElement = form.querySelector(selectors.submitElement);
+const setEventListeners = (form, selectors) => { // 
+  const submitElement = form.querySelector(selectors.submitElement); //
   const inputs = Array.from(form.querySelectorAll(selectors.inputSelector));
     
   inputs.forEach(inputElement => {

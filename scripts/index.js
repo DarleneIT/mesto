@@ -1,4 +1,5 @@
-import Card from './card.js';
+import Card from './Сard.js';
+import { FormValidator } from './FormValidator.js';
 
 //Кнопки
 const openEditProfileButton = document.querySelector('.profile__open');
@@ -26,12 +27,13 @@ const imageFullSize = document.querySelector('.image__photo');
 const nameImageFullSize = document.querySelector('.image__title');
 
 //Селекторы
-const selectors = {
-  formSelector: '.popup__form',
-  submitElement: '.popup__save',
-  inputSelector: '.popup__field',
-  inactiveButtonClass: 'popup__save_invalid',
-  inputErrorClass: 'popup__error-active',
+const selectorConfig = {
+  formSelector: '.popup__form', //форма
+  submitElement: '.popup__save', //кнопка сохранить
+  inputSelector: '.popup__field', //поле ввода
+  inactiveButtonClass: 'popup__save_invalid', //неактивная кнопка сохранить
+  inputErrorClass: 'popup__error-active', //показать ошибку
+  errorClass: 'popup__field-block' //добавляет красную границу
 }
 
 //Шесть карточек «из коробки»
@@ -62,13 +64,25 @@ const initialCards = [
   }
 ];
 
-enableValidation(selectors);
+const validateProfile = new FormValidator(selectorConfig, popUpProfile);
+validateProfile.enableValidation();
+  
+const validateNewCard = new FormValidator(selectorConfig, popUpNewCard);
+validateNewCard.enableValidation();
 
 //Функция Открыть окно
 const openPopUp = (open) => {
   open.classList.add('popup_opened');
   document.addEventListener('keydown', closeEsc);
-  document.addEventListener('mousedown', closeOverlay)
+  document.addEventListener('mousedown', closeOverlay);
+}
+
+//Функция Открыть большую картинку
+const popUpFullImage = (name, link) => {
+  nameImageFullSize.textContent = name;
+  nameImageFullSize.alt = name;
+  imageFullSize.src = link;
+  openPopUp(popUpImage);
 }
 
 //Функция Закрыть окно Esc
@@ -102,6 +116,7 @@ closeButtons.forEach((button) => {
 //Открыть редактирование профиля
 openEditProfileButton.addEventListener('click', function () {
   openPopUp(popUpProfile);
+  validateProfile.resetValidation();
   inputProfileJob.value = userJob.textContent;
   inputProfileName.value = userName.textContent;
 }
@@ -118,13 +133,14 @@ formProfile.addEventListener('submit', handleProfileFormSubmit);
 
 //Открыть форму добавление новой карточки
 addNewCardButton.addEventListener('click', function () {
+  validateNewCard.resetValidation();
   openPopUp(popUpNewCard);
 });
 
 //Создание карточки
 const createCard = (element) => {
   const card = new Card(element, '.card-template');
-  const cardElement = card.generateCard()
+  const cardElement = card.generateCard();
   return cardElement
 }
 
@@ -150,10 +166,7 @@ formNewCard.addEventListener('submit', (event) => {
     link: inputNewCardLink.value,
   });
   closePopUp(popUpNewCard);
-  const saveButton = formNewCard.querySelector(selectors.submitElement);
-  if(saveButton.disabled === false) {  
-    inactiveButton(saveButton);
-    saveButton.classList.add(selectors.inactiveButtonClass); 
-  };
   formNewCard.reset();
 });
+
+export { popUpFullImage }

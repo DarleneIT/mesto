@@ -74,16 +74,15 @@ const cardSection = new Section(
   cards);
 cardSection.renderCard(initialCards);
 
-//Создать карточку в начале списка
+//Создать карточку
 const addNewCard = (element) => {
   cards.prepend(createCard(element));
 }
 const submitNewCard = () => {
-  const cardInfo = {
+  addNewCard({
     name: inputNewCardName.value,
     link: inputNewCardLink.value
-  }
-  addNewCard(cardInfo)
+  })
 }
 
 const popupWithCard = new PopupWithForm(popupNewCard, submitNewCard);

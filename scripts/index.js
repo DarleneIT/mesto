@@ -47,12 +47,10 @@ const popupEditProfile = () => {
   const defaultUserData = userProfile.getUserInfo();
   inputProfileName.value = defaultUserData.name;
   inputProfileJob.value = defaultUserData.job;
-  
-}
-profileEditButton.addEventListener('click', function() {
   popupWithProfile.open();
   profileValidation.resetValidation();
-});
+}
+profileEditButton.addEventListener('click', popupEditProfile);
 
 //КАРТОЧКИ
 //Всплывающее окно большой картинки

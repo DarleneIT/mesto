@@ -70,11 +70,28 @@
     <div class="popup__container">
       <button class="popup__close popup__close-button" type="button" aria-label="Закрыть"></button>
       <h3 class="popup__title">Новое место</h3>
+
       <form class="popup__form item__form" name="items" novalidate>
-        <input class="popup__field popup__field_type_title" type="text" value="" placeholder="Название" name="place" id="type-title"  minlength="2" maxlength="30" required>
+        <input 
+          class="popup__field popup__field_type_title" 
+          type="text"
+          value=""
+          placeholder="Название"
+          name="place"
+          id="type-title"
+          minlength="2"
+          maxlength="30"
+          required>
         <span class="type-title-error popup__error"></span>
 
-        <input class="popup__field popup__field_type_link" type="url" value="" placeholder="Ссылка на картинку" name="link" id="type-link" required>
+        <input 
+          class="popup__field popup__field_type_link"
+          type="url"
+          value=""
+          placeholder="Ссылка на картинку"
+          name="link"
+          id="type-link"
+          required>
         <span class="type-link-error popup__error"></span>
 
         <button class="popup__save" type="submit" aria-label="Создать" name="create" id="popup-save-newcard">Создать</button>

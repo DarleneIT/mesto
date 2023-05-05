@@ -1,9 +1,9 @@
 class Card {
-  constructor(data, openFullImage, templateSelector) {
-    this._name = data.name;
-    this._link = data.link;
-    this._openFullImage = openFullImage;
+  constructor({ name, link }, handleCardClick, templateSelector) {
+    this._name = name;
+    this._link = link;
     this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -46,13 +46,12 @@ class Card {
   };
 
   _openCard() {
-    this._openFullImage(this._name, this._link);
+    this._handleCardClick(this._name, this._link);
   };
 
   _deleteCard() {
     this._element.remove();
     this._element = null;
-
   };
 }
 

@@ -6,7 +6,7 @@ class Section {
   }
   
   renderCard() {
-    this._initialCards.forEach((element) => {
+    this._initialCards.forEach(element => {
       this._renderer(element);
     });
   }

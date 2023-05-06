@@ -1,6 +1,6 @@
 class UserInfo {
   constructor ({ userName, userJob }) {
-    this._name = document.querySelector(userName)
+    this._name = document.querySelector(userName),
     this._job = document.querySelector(userJob)}
 
   getUserInfo() {

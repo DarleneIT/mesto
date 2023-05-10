@@ -26,19 +26,15 @@ profileValidation.enableValidation();
 const newCardValidation = new FormValidator(selectorConfig, popupNewCard);
 newCardValidation.enableValidation();
 
-//ПРОФИЛЬ
 //Данные профиля
 const userInfo = new UserInfo({ userName: '.profile__name', userJob: '.profile__job' })
 
 //Редактировать попап с данными профиля
 const editUserInfo = (data) => {
   userInfo.setUserInfo({
-    userName: inputProfileName.value,
-    userJob: inputProfileJob.value 
+    name: data.name,
+    job: data.job 
   });
-  console.log(data.name);
-  console.log(userInfo.setUserInfo);
-
 }
 
 //Всплывающее окно редактирования профиля
@@ -56,13 +52,6 @@ const popupEditProfile = () => {
 
 profileEditButton.addEventListener('click', popupEditProfile);
 
-
-
-
-
-
-
-//КАРТОЧКИ
 //Всплывающее окно большой картинки
 const popupWithImage = new PopupWithImage(popupImage);
 popupWithImage.setEventListeners();

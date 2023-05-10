@@ -1,3 +1,4 @@
+import './index.css';
 import { 
   initialCards, 
   selectorConfig,
@@ -10,13 +11,13 @@ import {
   inputProfileName,
   inputProfileJob,
   inputNewCardName,
-  inputNewCardLink } from './constants.js';
-import { Card } from './Сard.js';
-import { Section } from './Section.js'
-import { FormValidator } from './FormValidator.js';
-import { PopupWithImage } from './PopupWithImage.js';
-import { PopupWithForm } from './PopupWithForm.js';
-import { UserInfo } from './UserInfo.js';
+  inputNewCardLink } from '../utils/constants.js';
+import { Card } from '../components/Сard.js';
+import { Section } from '../components/Section.js'
+import { FormValidator } from '../components/FormValidator.js';
+import { PopupWithImage } from '../components/PopupWithImage.js';
+import { PopupWithForm } from '../components/PopupWithForm.js';
+import { UserInfo } from '../components/UserInfo.js';
 
 //Валидация формы профайла пользователя
 const profileValidation = new FormValidator(selectorConfig, popupProfile);

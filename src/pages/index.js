@@ -6,12 +6,7 @@ import {
   profileEditButton,
   newCardAddButton,
   popupProfile, 
-  popupNewCard, 
-  popupImage, 
-  inputProfileName,
-  inputProfileJob,
-  inputNewCardName,
-  inputNewCardLink } from '../utils/constants.js';
+  popupNewCard } from '../utils/constants.js';
 import { Card } from '../components/Сard.js';
 import { Section } from '../components/Section.js'
 import { FormValidator } from '../components/FormValidator.js';
@@ -33,59 +28,45 @@ const userInfo = new UserInfo({ userName: '.profile__name', userJob: '.profile__
 //Редактировать попап с данными профиля
 const editUserInfo = (data) => {
   userInfo.setUserInfo({
-    name: data.name,
+    username: data.username,
     job: data.job 
   });
 }
 
 //Всплывающее окно редактирования профиля
-const popupWithProfile = new PopupWithForm(popupProfile, editUserInfo);
+const popupWithProfile = new PopupWithForm('.profile-popup', editUserInfo);
 popupWithProfile.setEventListeners();
 
 //Открыть попап с данными профиля
 const popupEditProfile = () => {
-  const { name, job } = userInfo.getUserInfo();
-  inputProfileName.value = name;
-  inputProfileJob.value = job;
+  const { username, job } = userInfo.getUserInfo();
+  popupWithProfile.setInputValues({ username, job });
   popupWithProfile.open();
   profileValidation.resetValidation();
 }
-
 profileEditButton.addEventListener('click', popupEditProfile);
 
 //Всплывающее окно большой картинки
-const popupWithImage = new PopupWithImage(popupImage);
+const popupWithImage = new PopupWithImage('.image');
 popupWithImage.setEventListeners();
-const handleCardClick = (name, link) => {popupWithImage.open(name, link)};
+const handleCardClick = (title, link) => {popupWithImage.open(title, link)};
 
 //Cоздание новой карточки и взаимодействие с ней
 const createCard = (element) => {
   const card = new Card(element, handleCardClick, '.card-template');
-  const cardElement = card.generateCard();
-  return cardElement
+  return card.generateCard();
 }
 
-//Отрисовка карточек "из коробки" на странице
+//Отрисовка карточек "из коробки"
 const cardSection = new Section(
   {initialCards: initialCards, 
-   renderer: (element) => { 
-    cardSection.addItem(createCard(element));}
-  }, 
-  cards);
-cardSection.renderCard(initialCards);
+   renderer: (element) => {cardSection.addItem(createCard(element));}},
+   cards);
+  cardSection.renderCard(initialCards);
 
-//Создать карточку
-const addNewCard = (element) => {
-  cards.prepend(createCard(element));
-}
-const submitNewCard = () => {
-  addNewCard({
-    name: inputNewCardName.value,
-    link: inputNewCardLink.value
-  })
-}
-
-const popupWithCard = new PopupWithForm(popupNewCard, submitNewCard);
+//Создать новую карточку
+const popupWithCard = new PopupWithForm('.item', ({ title, link }) => {
+  cardSection.prependItem(createCard({ title, link }))});
 popupWithCard.setEventListeners();
 
 newCardAddButton.addEventListener('click', function() {

@@ -26,7 +26,7 @@ const initialCards = [
 ];
 
 //Селекторы
-const selectorConfig = {
+const validationConfig = {
   formSelector: '.popup__form',
   submitElement: '.popup__save',
   inputSelector: '.popup__field',
@@ -37,21 +37,25 @@ const selectorConfig = {
 
 //Кнопки
 const profileEditButton = document.querySelector('.profile__open');
+const profileNewAvatar = document.querySelector('.profile__avatar');
 const newCardAddButton = document.querySelector('.profile__add-button');
 
 //Переменные всплывающих окон
 const popupProfile = document.querySelector('.profile-popup');
 const popupNewCard = document.querySelector('.item');
+const popupAvatar = document.querySelector('.avatar');
 
 //Переменные для создания карточек
 const cards = document.querySelector('.elements');
 
 export { 
   initialCards, 
-  selectorConfig,
+  validationConfig,
   cards,
   profileEditButton,
+  profileNewAvatar,
   newCardAddButton,
   popupProfile, 
-  popupNewCard
+  popupNewCard,
+  popupAvatar
 }

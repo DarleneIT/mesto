@@ -6,6 +6,7 @@ class PopupWithForm extends Popup {
     this._submitForm = submitForm;
     this._form =  this._popup.querySelector('.popup__form');
     this._inputs = Array.from(this._form.querySelectorAll('.popup__field'));
+    this._saveButton = this._form.querySelector('.popup__save');
   }
 
   _getInputValues() {
@@ -29,6 +30,16 @@ class PopupWithForm extends Popup {
       this._submitForm(this._getInputValues());
       this.close();
     });
+  }
+
+  loadingMessage(loadInProgress, saveButtonMsg) {
+    if (loadInProgress) {
+      this._saveButton.textContent = saveButtonMsg;
+      this._saveButton.disabled = true;
+    } else {
+      this._saveButton.textContent = saveButtonMsg;
+      this._saveButton.disabled = false;
+    }
   }
     
   close() {

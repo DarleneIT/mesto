@@ -15,11 +15,15 @@
 
   <main class="content">
     <section class="profile">
-      <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватар пользователя">
+      <div class="profile__avatar-edit">
+        <img class="profile__avatar" alt="Аватар пользователя" src="#">
+      </div> 
+  
+     
       <div class="profile__info">
-        <h1 class="profile__name">Жак-Ив Кусто</h1>
+        <h1 class="profile__name"></h1>
         <button class="profile__open" type="button" aria-label="Редактировать профиль"></button>
-        <p class="profile__job">Исследователь океана</p>
+        <p class="profile__job"></p>
       </div>
       <button class="profile__add-button" type="button" aria-label="Добавить карточку"></button>
     </section>
@@ -41,22 +45,24 @@
         <input 
           class="popup__field popup__field_type_name" 
           type="text" 
-          value="Жак-Ив Кусто" 
+          value=" " 
           placeholder="Ваше имя" 
           name="username" 
           id="type-name" 
-          minlength="2" maxlength="40" 
+          minlength="2" maxlength="40"
+          autocomplete="off"
           required>
         <span class="type-name-error popup__error"></span>
 
         <input 
           class="popup__field popup__field_type_job" 
           type="text" 
-          value="Исследователь океана" 
+          value=" " 
           placeholder="Ваше призвание" 
           name="job" 
           id="type-job" 
-          minlength="2" maxlength="200" 
+          minlength="2" maxlength="200"
+          autocomplete="off"
           required>
         <span class="type-job-error popup__error"></span>
 
@@ -107,13 +113,41 @@
     </div>
   </div>
 
+  <div class="popup confirm">
+    <div class="popup__container">
+      <button class="popup__close popup__close-button" type="button" aria-label="Закрыть"></button>
+      <h3 class="popup__title">Вы уверены?</h3>
+      <form class="popup__form"><button class="popup__save" type="submit" aria-label="Да" name="confirmation" id="popup-delete-card">Да</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup avatar">
+    <div class="popup__container">
+      <button class="popup__close popup__close-button" type="button" aria-label="Закрыть"></button>
+      <h3 class="popup__title">Обновить аватар</h3>
+
+      <form class="popup__form item__avatar" name="avatar" novalidate>
+        <input 
+          class="popup__field popup__field_type_link" type="url" value="" placeholder="Ссылка на аватар" name="avatar" id="type-link" required>
+        <span class="type-link-error popup__error"></span>
+
+        <button class="popup__save" type="submit" aria-label="Создать" name="create" id="popup-save-avatar">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
   <template id="card" class="card-template">
     <article class="element">
       <img class="element__photo" alt="Фото">
       <button class="element__delete" type="button" aria-label="Удалить"></button>
       <div class="element__info">
         <h2 class="element__title"></h2>
-        <button class="element__like" type="button" aria-label="Нравится"></button>
+        <div class="element__likes">
+          <button class="element__like" type="button" aria-label="Нравится"></button>
+          <h3 class="element__counter"></h3>
+        </div>
+      
       </div>
     </article>
   </template>

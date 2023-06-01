@@ -32,6 +32,7 @@ Promise.all([api.getUserName(), api.getItems()])
     userInfo.setUserInfo({username: data.name, job: data.about, avatar: data.avatar})
     cardSection.renderCard(serverCard)
   })
+  .catch(error => console.log(`Ошибка ${error}`))
 
 //ВАЛИДАЦИЯ
 // - формы профайла пользователя
@@ -62,8 +63,10 @@ const popupWithProfile = new PopupWithForm('.profile-popup', (data) => {
       userInfo.setUserInfo({
         username: res.name, 
         job: res.about, 
-        avatar: res.avatar})
+        avatar: res.avatar});
+      popupWithProfile.close()
      })
+
     .catch(error => console.log(`Не удалось изменить данные пользователя ${error}`))
     .finally(() => { popupWithProfile.loadingMessage(false, 'Сохранить') })
 });
@@ -86,7 +89,8 @@ const popupWithNewAvatar = new PopupWithForm('.avatar', (data) => {
     userInfo.setUserInfo({
       username: res.name, 
       job: res.about, 
-      avatar: res.avatar })
+      avatar: res.avatar });
+    popupWithNewAvatar.close();    
    })
    .catch(error => console.log(`Не удалось изменить аватар ${error}`))
    .finally(() => { popupWithNewAvatar.loadingMessage(false, 'Сохранить') })
@@ -150,6 +154,7 @@ const popupWithCard = new PopupWithForm('.item', (data) => {
     .then(([data, dataCard]) => {
       dataCard.user = data._id;
       cardSection.prependItem(createCard(dataCard))
+      popupWithCard.close();
     })
   .catch(error => console.log(`Не удалось загрузить картинку ${error}`))
   .finally(() => { popupWithCard.loadingMessage(false, 'Создать') })

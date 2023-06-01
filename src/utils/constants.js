@@ -48,7 +48,7 @@ const popupAvatar = document.querySelector('.avatar');
 //Переменные для создания карточек
 const cards = document.querySelector('.elements');
 
-export { 
+export {
   validationConfig,
   cards,
   profileEditButton,

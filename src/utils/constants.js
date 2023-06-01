@@ -49,7 +49,6 @@ const popupAvatar = document.querySelector('.avatar');
 const cards = document.querySelector('.elements');
 
 export { 
-  initialCards, 
   validationConfig,
   cards,
   profileEditButton,

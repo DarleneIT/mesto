@@ -71,7 +71,7 @@ class Card {
 
   _showMyLikes() {
     this._likes.forEach(like => {
-      if (like._id === this._user) {
+      if (like._id === this._userId) {
         this._likeButton.classList.add('element__like_active')
       return
       }

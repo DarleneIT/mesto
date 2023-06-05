@@ -9,7 +9,7 @@ class PopupWithImage extends Popup {
 
   open(title, link) {
     this._nameImageFullSize.textContent = title;
-    this._nameImageFullSize.alt = title;
+    this._imageFullSize.alt = title;
     this._imageFullSize.src = link;
     super.open();
   }

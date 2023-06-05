@@ -1,11 +1,11 @@
 class Card {
-  constructor(data, { handleCardClick, handleDeleteCard, handleDeleteLike, handleAddLike }, templateSelector) {
-    
+  constructor(data, userId, { handleCardClick, handleDeleteCard, handleDeleteLike, handleAddLike }, templateSelector) {
     this._name = data.name;
     this._link = data.link;
     this._user = data.user;
     this._owner = data.owner._id;
     this._cardId = data._id;
+    this._userId = userId;
 
     this._likes = data.likes;
     this._likesLength = data.likes.length;
@@ -96,7 +96,7 @@ class Card {
   };
 
   _hideTrashIcon() {
-    if (this._user !== this._owner) {
+    if (this._userId !== this._owner) {
       this._deleteButton.remove();
     }
   };

@@ -22,12 +22,12 @@ class Popup {
 
   _handleOverlayClose = (event) => {
     if (event.target.classList.contains('popup_opened')) {
-    this.close(event.target);
+    this.close();
     }
   }
 
   setEventListeners() {
-    document.addEventListener('mousedown', this._handleOverlayClose);
+    this._popup.addEventListener('mousedown', this._handleOverlayClose);
     this._closeX.addEventListener('click', () => {this.close()});
     }
 }

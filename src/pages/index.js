@@ -17,6 +17,8 @@ import { PopupWithConfirmation } from '../components/PopupWithConfirmation.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { Api } from '../components/Api.js'
 
+let userId = null;
+
 //API
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-66/',
@@ -27,10 +29,10 @@ const api = new Api({
 });
 
 Promise.all([api.getUserName(), api.getItems()])
-  .then(([data, serverCard]) => { 
-    serverCard.forEach(element => element.user = data._id)
-    userInfo.setUserInfo({username: data.name, job: data.about, avatar: data.avatar})
-    cardSection.renderCard(serverCard)
+  .then(([data, initialCards]) => { 
+    userId = data._id;
+    userInfo.setUserInfo({ username: data.name, job: data.about, avatar: data.avatar })
+    cardSection.renderCard(initialCards);
   })
   .catch(error => console.log(`Ошибка ${error}`))
 
@@ -56,65 +58,64 @@ popupWithDelete.setEventListeners();
 const userInfo = new UserInfo({ userName: '.profile__name', userJob: '.profile__job', avatar: '.profile__avatar'})
 
 //Редактировать данные профиля
-const popupWithProfile = new PopupWithForm('.profile-popup', (data) => {
-  popupWithProfile.loadingMessage(true, 'Сохранение...')
+const openPopupWithProfile = new PopupWithForm('.profile-popup', (data) => {
+  openPopupWithProfile.loadingMessage(true, 'Сохранение...')
   api.setUserInfo(data) 
     .then(res => { 
       userInfo.setUserInfo({
         username: res.name, 
         job: res.about, 
         avatar: res.avatar});
-      popupWithProfile.close()
+      openPopupWithProfile.close()
      })
-
     .catch(error => console.log(`Не удалось изменить данные пользователя ${error}`))
-    .finally(() => { popupWithProfile.loadingMessage(false, 'Сохранить') })
+    .finally(() => { openPopupWithProfile.loadingMessage(false) })
 });
-popupWithProfile.setEventListeners();
+openPopupWithProfile.setEventListeners();
 
 //Открыть попап с данными профиля
-const popupEditProfile = () => {
+const openPopupEditProfile = () => {
   const { username, job } = userInfo.getUserInfo();
-  popupWithProfile.setInputValues({ username, job });
-  popupWithProfile.open();
+  openPopupWithProfile.setInputValues({ username, job });
+  openPopupWithProfile.open();
   profileValidation.resetValidation();
 }
-profileEditButton.addEventListener('click', popupEditProfile);
+profileEditButton.addEventListener('click', openPopupEditProfile);
 
 //Редактировать аватар
-const popupWithNewAvatar = new PopupWithForm('.avatar', (data) => {
-  popupWithNewAvatar.loadingMessage(true, 'Сохранение...');
+const openPopupWithNewAvatar = new PopupWithForm('.avatar', (data) => {
+  openPopupWithNewAvatar.loadingMessage(true, 'Сохранение...');
   api.setAvatar(data)
    .then(res => {
     userInfo.setUserInfo({
       username: res.name, 
       job: res.about, 
       avatar: res.avatar });
-    popupWithNewAvatar.close();    
+    openPopupWithNewAvatar.close();    
    })
    .catch(error => console.log(`Не удалось изменить аватар ${error}`))
-   .finally(() => { popupWithNewAvatar.loadingMessage(false, 'Сохранить') })
+   .finally(() => { openPopupWithNewAvatar.loadingMessage(false) })
 });
-popupWithNewAvatar.setEventListeners();
+openPopupWithNewAvatar.setEventListeners();
 
 //Открыть попап с аватаром
-const popupNewAvatar = () => {
-    popupWithNewAvatar.open(),
+const openNewAvatar = () => {
+    openPopupWithNewAvatar.open(),
     avatarValidation.resetValidation();
 }
-profileNewAvatar.addEventListener('click', popupNewAvatar);
+profileNewAvatar.addEventListener('click', openNewAvatar);
 
 //КАРТОЧКИ
 //Всплывающее окно большой картинки
-const popupWithImage = new PopupWithImage('.image');
-popupWithImage.setEventListeners();
+const openPopupWithImage = new PopupWithImage('.image');
+openPopupWithImage.setEventListeners();
 
 //Cоздание новой карточки и взаимодействие с ней
-function createCard(element) {
+function createCard(cardData) {
   const card = new Card(
-     element,
-    {handleCardClick: (title, link) => {popupWithImage.open(title, link)},
-
+    cardData,
+    userId,
+    {handleCardClick: (title, link) => {openPopupWithImage.open(title, link)},
     handleDeleteCard: () => {
       popupWithDelete.open();
       popupWithDelete.setSubmitAction(() => { 
@@ -126,19 +127,16 @@ function createCard(element) {
           .catch(error => console.log(`Не удалось выполнить действие. ${error}`))
       })
     },
-
     handleDeleteLike: (cardId) => {
       api.deleteLike(cardId)
         .then(res => {card.updateLike(res)})
         .catch(error => console.log(`Не удалось выполнить действие. ${error}`))
-      }, 
-
+    },
     handleAddLike: (cardId) => {
       api.addLike(cardId)
         .then(res => {card.updateLike(res)})
         .catch(error => console.log(`Не удалось выполнить действие. ${error}`))
-      }},
-
+    }},
     '.card-template');
   return card.generateCard();
 }
@@ -148,20 +146,20 @@ const cardSection = new Section((element) => {
   cardSection.addItem(createCard(element))}, cards);
   
 //Создать новую карточку
-const popupWithCard = new PopupWithForm('.item', (data) => {
-  popupWithCard.loadingMessage(true, 'Создание...');
-  Promise.all([api.getUserName(), api.addCard(data)])
-    .then(([data, dataCard]) => {
-      dataCard.user = data._id;
-      cardSection.prependItem(createCard(dataCard))
-      popupWithCard.close();
+const openPopupWithCard = new PopupWithForm('.item', (data) => {
+  openPopupWithCard.loadingMessage(true, 'Создание...');
+  api.addCard(data)
+    .then((dataCard) => {
+      cardSection.prependItem(createCard(dataCard));
+      openPopupWithCard.close();
     })
   .catch(error => console.log(`Не удалось загрузить картинку ${error}`))
-  .finally(() => { popupWithCard.loadingMessage(false, 'Создать') })
+  .finally(() => { openPopupWithCard.loadingMessage(false) })
 })
-popupWithCard.setEventListeners();
+
+openPopupWithCard.setEventListeners();
 
 newCardAddButton.addEventListener('click', function() {
-  popupWithCard.open();
+  openPopupWithCard.open();
   newCardValidation.resetValidation();
 });
